@@ -43,7 +43,6 @@ def get_dict_from_obj(obj):
         if key.endswith('_id'):
             key2 = key.replace('_id', '')
             try:
-                print(dir(obj._meta.get_field(key2)))
                 field = obj._meta.get_field(key2)
                 if isinstance(field, ForeignKey):
                     obj_dict_result[key2] = obj_dict_result[key]
