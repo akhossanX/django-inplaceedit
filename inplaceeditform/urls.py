@@ -13,23 +13,14 @@
 #
 # You should have received a copy of the GNU Lesser General Public License
 # along with this programe.  If not, see <http://www.gnu.org/licenses/>.
-
-#try:
-#    from django.conf.urls import patterns, url
-#except ImportError:  # Django < 1.4
-#from django.conf.urls.defaults import patterns, url
-
-#from django.conf.urls import patterns, url, include
-
-#urlpatterns = patterns('inplaceeditform.views',
-#    url(r'^save/$', 'save_ajax', name='inplace_save'),
-#    url(r'^get_field/$', 'get_field', name='inplace_get_field')
-#)
-
-from django.conf.urls import url, include
 from inplaceeditform.views import save_ajax, get_field
+
+try:
+    from django.conf.urls import url
+except ImportError:  # Django < 1.4
+    from django.conf.urls.defaults import patterns, url
 
 urlpatterns = [
     url(r'^save/$', save_ajax, name='inplace_save'),
-    url(r'^get_field/$', get_field, name='inplace_get_field'),
+    url(r'^get_field/$', get_field, name='inplace_get_field')
 ]
