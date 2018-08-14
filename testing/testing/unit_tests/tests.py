@@ -23,7 +23,7 @@ import sys
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import Permission, User
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.test import TestCase
 from django.test.client import Client

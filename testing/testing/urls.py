@@ -21,7 +21,7 @@ except ImportError:  # Django < 1.4
     from django.conf.urls.defaults import include, patterns, url
 
 from django.contrib import admin
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
