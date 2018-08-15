@@ -21,8 +21,9 @@ class SuperUserPermEditInline(object):
 
     @classmethod
     def can_edit(cls, field):
-        return field.request.user.is_authenticated and field.request.user.is_superuser
-
+        if not field.request or field.request.user: 
+            return False
+        return field.request.user.is_authenticated() and field.request.user.is_superuser()
 
 class AdminDjangoPermEditInline(SuperUserPermEditInline):
 
