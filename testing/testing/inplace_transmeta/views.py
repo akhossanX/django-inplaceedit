@@ -14,20 +14,15 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this programe.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.shortcuts import render, get_object_or_404
 
 from testing.inplace_transmeta.models import News
 
 
 def news_index(request):
-    return render_to_response('news/index.html',
-                              {'news': News.objects.all()},
-                              context_instance=RequestContext(request))
+    return render(request, 'news/index.html', {'news': News.objects.all()})
 
 
 def news_edit(request, news_id):
     news_item = get_object_or_404(News, pk=news_id)
-    return render_to_response('news/edit.html',
-                              {'news_item': news_item},
-                              context_instance=RequestContext(request))
+    return render(request, 'news/edit.html', {'news_item': news_item})

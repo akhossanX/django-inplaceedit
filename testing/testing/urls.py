@@ -22,8 +22,7 @@ except ImportError:  # Django < 1.4
 
 from django.contrib import admin
 from django.urls import reverse
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 
 admin.autodiscover()
 
@@ -48,9 +47,7 @@ def index(request):
         context['news_url'] = reverse('news_index')
     if 'testing.example_extra_fields' in settings.INSTALLED_APPS:
         context['extra_url'] = reverse('extra_index')
-    return render_to_response('index.html',
-                              context,
-                              context_instance=RequestContext(request))
+    return render(request, 'index.html', context)
 
 urlpatterns += patterns('',
     url(r'^$', index))
