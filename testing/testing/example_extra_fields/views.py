@@ -14,20 +14,16 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this programe.  If not, see <http://www.gnu.org/licenses/>.
 
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.shortcuts import render, get_object_or_404
 
 from testing.multimediaresources.models import Resource
 
 
 def extra_index(request):
-    return render_to_response('extra_fields/index.html',
-                              {'resources': Resource.objects.all()},
-                              context_instance=RequestContext(request))
+    return render(request, 'extra_fields/index.html',
+                              {'resources': Resource.objects.all()})
 
 
 def extra_edit(request, resource_id):
     resource = get_object_or_404(Resource, pk=resource_id)
-    return render_to_response('extra_fields/edit.html',
-                              {'resource': resource},
-                              context_instance=RequestContext(request))
+    return render(request, 'extra_fields/edit.html', {'resource': resource})
