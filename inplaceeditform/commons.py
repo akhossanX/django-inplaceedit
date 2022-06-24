@@ -16,7 +16,10 @@
 
 from django import template
 from django.db import models
-from django.db.models.fields import FieldDoesNotExist
+try:
+    from django.db.models.fields import FieldDoesNotExist
+except ImportError:
+    from django.core.exceptions import FieldDoesNotExist
 from django.db.models.fields.related import ForeignKey, ManyToManyField
 from django.conf import settings
 
